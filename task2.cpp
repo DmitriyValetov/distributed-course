@@ -7,8 +7,6 @@
 #include <limits>
 
 using namespace std;
-
-
 vector<int> matrix;
 
 struct result {
@@ -19,15 +17,13 @@ struct result {
 
 result answer;
 
-// in answer first element is value others are its coordinate
-
 result function(int threadsCount) {
-
     omp_set_num_threads(threadsCount);
 
-    //array of minimum values in every thread
+    //array of minimum/maximum values in every thread
     vector<int> arr_min_val(threadsCount, std::numeric_limits<int>::max());
     vector<int> arr_max_val(threadsCount, std::numeric_limits<int>::min());
+    //array of their coordinates
     vector<vector<int> > max_coor(threadsCount);
     vector<vector<int> > min_coor(threadsCount);
     int size(matrix.size());
@@ -100,12 +96,10 @@ int main(int argc, char** argv) {
     begin = omp_get_wtime();
     // algorithm starts
     answer = function(threads_count);
-
     end = omp_get_wtime();
-    total = end - begin;
 
     std::cout << " Time: "
-        << total << std::endl;
+        << end - begin << std::endl;
 
     return 0;
 }
