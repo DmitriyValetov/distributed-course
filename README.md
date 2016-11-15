@@ -2,6 +2,8 @@
 
 Задания по параллельным и распределенным вычислениям.
 
+task1 - threads, task2 - OpenMP, task3 - MPI+OpenMP
+
 task2.cpp - сам код программы
 
 task2_data.xlsx - данные, полученные на кластере
